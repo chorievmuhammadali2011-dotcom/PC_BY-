@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <title>PREMIUM TECH — Computer Store</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<header class="header">
+  <a href="#" class="logo">P<span>◆</span>TECH</a>
+
+  <nav class="nav" id="nav">
+    <a href="#home">Главная</a>
+    <a href="#categories">Категории</a>
+    <a href="#catalog">Каталог</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+
+  <div class="header-actions">
+    <select id="language" aria-label="Language">
+      <option value="ru">RU</option>
+      <option value="uz">UZ</option>
+      <option value="en">EN</option>
+    </select>
+    <button class="icon-btn" id="searchToggle" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+    <button class="icon-btn" id="favoritesToggle" aria-label="Favorites"><i class="fa-regular fa-heart"></i></button>
+    <button class="icon-btn cart-button" id="cartOpen" aria-label="Cart">
+      <i class="fa-solid fa-bag-shopping"></i><span id="cartCount">0</span>
+    </button>
+    <button class="icon-btn menu-btn" id="menuToggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</header>
+
+<div class="search-panel" id="searchPanel">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input id="searchInput" type="search" placeholder="Название, бренд или артикул...">
+  <button id="searchClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+</div>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <span class="eyebrow"><i class="fa-solid fa-circle"></i> TECHNOLOGY WITHOUT LIMITS</span>
+      <h1>DISCOVER<br>THE <span>POWER.</span></h1>
+      <p>Компьютеры, ноутбуки и комплектующие для тех, кто выбирает производительность, качество и стиль.</p>
+      <div class="hero-buttons">
+        <a href="#catalog" class="btn-primary">Открыть каталог <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#categories" class="btn-outline">Категории</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>1500<span>+</span></strong><small>Товаров в каталоге</small></div>
+        <div><strong>50<span>+</span></strong><small>Брендов</small></div>
+        <div><strong>24/7</strong><small>Поддержка</small></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-glow"></div>
+      <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=1100&q=90" alt="Gaming PC">
+      <div class="hero-label"><i class="fa-solid fa-bolt"></i><span><b>POWER YOUR WORLD</b><small>Premium technology store</small></span></div>
+    </div>
+  </section>
+
+  <section class="benefits">
+    <div><i class="fa-solid fa-truck-fast"></i><span><b>Быстрая доставка</b><small>По Узбекистану</small></span></div>
+    <div><i class="fa-solid fa-shield-halved"></i><span><b>Гарантия</b><small>На товары магазина</small></span></div>
+    <div><i class="fa-solid fa-headset"></i><span><b>Поддержка</b><small>Помощь с выбором</small></span></div>
+    <div><i class="fa-solid fa-credit-card"></i><span><b>Удобная оплата</b><small>Разные способы оплаты</small></span></div>
+  </section>
+
+  <section class="section" id="categories">
+    <div class="section-heading">
+      <div><span class="eyebrow">EXPLORE COLLECTION</span><h2>Наши <span>категории</span></h2></div>
+      <a href="#catalog" class="text-link">Все товары <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="category-grid" id="categoryGrid"></div>
+  </section>
+
+  <section class="section catalog-section" id="catalog">
+    <div class="section-heading">
+      <div><span class="eyebrow">FIND YOUR TECHNOLOGY</span><h2>Каталог <span>товаров</span></h2></div>
+      <div class="catalog-count" id="catalogCount">1500 товаров</div>
+    </div>
+
+    <div class="catalog-layout">
+      <aside class="filters-panel">
+        <div class="filter-title"><h3>Фильтры</h3><button id="resetFilters">Сбросить</button></div>
+
+        <div class="filter-group">
+          <h4>Категория</h4>
+          <div id="categoryFilters"></div>
+        </div>
+
+        <div class="filter-group">
+          <h4>Бренд</h4>
+          <div id="brandFilters"></div>
+        </div>
+
+        <div class="filter-group">
+          <h4>Цена, сум</h4>
+          <div class="price-inputs">
+            <input type="number" id="minPrice" placeholder="От">
+            <input type="number" id="maxPrice" placeholder="До">
+          </div>
+          <button class="apply-price" id="applyPrice">Применить</button>
+        </div>
+
+        <div class="filter-group">
+          <h4>Наличие</h4>
+          <label class="check-label"><input type="checkbox" id="inStock"> В наличии</label>
+        </div>
+      </aside>
+
+      <div class="catalog-main">
+        <div class="catalog-toolbar">
+          <div class="active-filter" id="activeFilter">Все товары</div>
+          <select id="sortSelect" aria-label="Sort">
+            <option value="popular">По популярности</option>
+            <option value="low">Сначала дешевле</option>
+            <option value="high">Сначала дороже</option>
+            <option value="name">По названию</option>
+          </select>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <i class="fa-solid fa-box-open"></i>
+          <h3>Товары не найдены</h3>
+          <p>Попробуйте изменить фильтры или поисковый запрос.</p>
+        </div>
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="promo">
+    <div>
+      <span class="eyebrow">BUILD YOUR DREAM PC</span>
+      <h2>CREATE YOUR<br><span>OWN POWER.</span></h2>
+      <p>Собери компьютер своей мечты с подходящими комплектующими.</p>
+      <button class="btn-primary" id="builderButton">3D-конфигуратор — скоро <i class="fa-solid fa-cube"></i></button>
+    </div>
+    <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=900&q=85" alt="Computer setup">
+  </section>
+
+  <section class="newsletter" id="contacts">
+    <span class="eyebrow">CONNECT WITH US</span>
+    <h2>Оставайся <span>на связи.</span></h2>
+    <p>Следи за новыми товарами, акциями и обновлениями магазина.</p>
+    <div class="social-links">
+      <a href="https://t.me/" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i> Telegram</a>
+      <a href="https://instagram.com/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> Instagram</a>
+      <a href="mailto:hello@example.com"><i class="fa-regular fa-envelope"></i> Email</a>
+      <a href="tel:+998000000000"><i class="fa-solid fa-phone"></i> Телефон</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <a href="#" class="logo">P<span>◆</span>TECH</a>
+  <p>© 2026 PTECH. All rights reserved.</p>
+  <a href="#home">Наверх ↑</a>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="drawer-header"><h3>Корзина</h3><button id="cartClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
+  <div id="cartItems" class="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Итого</span><strong id="cartTotal">0 сум</strong></div>
+    <button class="btn-primary checkout-btn" id="checkoutBtn">Оформить заказ</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
